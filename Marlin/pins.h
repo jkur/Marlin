@@ -161,6 +161,9 @@
   #include "pins_RAMBO.h"             // ATmega2560
 #elif MB(MINIRAMBO)
   #include "pins_MINIRAMBO.h"         // ATmega2560
+#elif MB(MINIRAMBO_10a)
+  #define  MINIRAMBO_10a
+  #include "pins_MINIRAMBO.h"         // ATmega2560
 #elif MB(ELEFU_3)
   #include "pins_ELEFU_3.h"           // ATmega2560
 #elif MB(LEAPFROG)

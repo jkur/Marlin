@@ -90,6 +90,7 @@
 #define BOARD_MEGATRONICS_31    704   // Megatronics v3.1
 #define BOARD_RAMBO             301   // Rambo
 #define BOARD_MINIRAMBO         302   // Mini-Rambo
+#define BOARD_MINIRAMBO_10a     102   // Mini-Rambo 1.0a
 #define BOARD_ELEFU_3           21    // Elefu Ra Board (v3)
 #define BOARD_LEAPFROG          999   // Leapfrog
 #define BOARD_MEGACONTROLLER    310   // Mega controller

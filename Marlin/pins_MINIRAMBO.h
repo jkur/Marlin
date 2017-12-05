@@ -24,11 +24,15 @@
  * Mini-Rambo pin assignments
  */
 
-#ifndef __AVR_ATmega2560__
-  #error "Oops!  Make sure you have 'Arduino Mega 2560 or Rambo' selected from the 'Tools -> Boards' menu."
+#if !defined(__AVR_ATmega2560__)
+  #error "Oops!  Make sure you have 'Rambo' selected from the 'Tools -> Boards' menu."
 #endif
 
-#define BOARD_NAME          "Mini Rambo"
+#if !defined(BOARD_NAME) && defined(MINIRAMBO_10a)
+  #define BOARD_NAME          "Mini Rambo 1.0a"
+#elif !defined(BOARD_NAME)
+  #define BOARD_NAME          "Mini Rambo"
+#endif
 
 //
 // Limit Switches
@@ -101,7 +105,11 @@
 //
 #define HEATER_0_PIN        3
 #define HEATER_1_PIN        7
-#define HEATER_2_PIN        6
+#if defined(MINIRAMBO_10a)
+  #define HEATER_2_PIN        -1
+#else
+  #define HEATER_2_PIN        6
+#endif
 #define HEATER_BED_PIN      4
 
 #define FAN_PIN             8
@@ -112,7 +120,11 @@
 //
 #define SDSS               53
 #define LED_PIN            13
-#define CASE_LIGHT_PIN      9
+#if defined(MINIRAMBO_10a)
+  #define CASE_LIGHT_PIN      -1
+#else
+  #define CASE_LIGHT_PIN      9
+#endif
 
 //
 // M3/M4/M5 - Spindle/Laser Control
@@ -127,17 +139,40 @@
 //
 #define E_MUX0_PIN         17
 #define E_MUX1_PIN         16
-#define E_MUX2_PIN         78 // 84 in MK2 Firmware, with BEEPER as 78
+#if defined(MINIRAMBO_10a)
+  #define E_MUX2_PIN         -1 // BEEPER is 78
+#else
+  #define E_MUX2_PIN         78 // 84 in MK2 Firmware, with BEEPER as 78
+#endif
 
 //
 // LCD / Controller
 //
 #if ENABLED(ULTRA_LCD)
 
-  #define KILL_PIN         32
+  #if defined(MINIRAMBO_10a)
+    #define KILL_PIN         -1
+  #else
+    #define KILL_PIN         32
+  #endif
 
-  #if ENABLED(NEWPANEL)
+  #if ENABLED(NEWPANEL) && defined(MINIRAMBO_10a)
+    #define BEEPER_PIN 78
 
+    #define BTN_EN1 80
+    #define BTN_EN2 73
+    #define BTN_ENC 21
+
+    #define LCD_PINS_RS 38
+    #define LCD_PINS_ENABLE 5
+    #define LCD_PINS_D4 14
+    #define LCD_PINS_D5 15
+    #define LCD_PINS_D6 32
+    #define LCD_PINS_D7 31
+
+    #define SD_DETECT_PIN 72
+
+  #elif ENABLED(NEWPANEL)
     // Beeper on AUX-4
     #define BEEPER_PIN     84
 
