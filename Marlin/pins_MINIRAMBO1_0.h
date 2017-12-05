@@ -108,7 +108,7 @@
 #define HEATER_2_PIN        -1 // 6
 #define HEATER_BED_PIN      4
 
-#define FAN_PIN             8 // 6 see: http://reprap.org/wiki/MiniRambo_development
+#define FAN_PIN             -1 // AUTO_FAN for extruder // 6 see: http://reprap.org/wiki/MiniRambo_development
 #define FAN1_PIN            6 // 8
 
 //
