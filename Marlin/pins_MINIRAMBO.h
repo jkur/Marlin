@@ -112,7 +112,11 @@
 #endif
 #define HEATER_BED_PIN      4
 
-#define FAN_PIN             8
+#if !defined(E0_AUTO_FAN_PIN)
+  #define FAN_PIN           8
+#else
+  #define FAN_PIN          -1
+#endif
 #define FAN1_PIN            6
 
 //
